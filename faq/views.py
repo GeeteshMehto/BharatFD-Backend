@@ -1,17 +1,3 @@
-# from rest_framework import generics
-# from .models import FAQ
-# from .serializers import FAQSerializer
-#
-# class FAQListCreateAPIView(generics.ListCreateAPIView):
-#     queryset = FAQ.objects.all()
-#     serializer_class = FAQSerializer
-#
-#     def get_serializer_context(self):
-#         context = super().get_serializer_context()
-#         # Pass the language parameter to the serializer context
-#         context['lang'] = self.request.query_params.get('lang', 'en')
-#         return context
-#
 
 
 from rest_framework import generics, status
