@@ -45,7 +45,7 @@ You can test the API at: [https://bharatfd-backend-7u4w.onrender.com/](https://b
 ### Method 1: Traditional Setup
 
 1. Clone the repository
-2. Navigate to the project directory:
+2. Navigate to the project directory where manage.py is located:
    ```bash
    cd faq_project
    ```
