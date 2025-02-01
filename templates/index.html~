@@ -371,7 +371,7 @@
     });
 
     // Create a new FAQ
-   
+
 $('#createFAQ').click(function () {
     const question = $('#question').val();
     const answer = $('#answer').val();
