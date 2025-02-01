@@ -5,7 +5,8 @@ set -e  # Exit immediately if a command exits with a non-zero status
 echo "🚀 BUILD START"
 
 # Install SQLite dependencies
- apk update &&  apk install --no-cache sqlite3
+apt-get update && apt-get install -y sqlite3 libsqlite3-dev
+
 
 # Install Python dependencies
 python3 -m pip install --upgrade pip
