@@ -1,0 +1,56 @@
+# from rest_framework import serializers
+# from .models import FAQ
+#
+# class FAQSerializer(serializers.ModelSerializer):
+#     question = serializers.SerializerMethodField()
+#     answer = serializers.SerializerMethodField()
+#
+#     class Meta:
+#         model = FAQ
+#         fields = ['id', 'question', 'answer']
+#
+#     def get_question(self, obj):
+#         # Get language from context; default is English
+#         lang = self.context.get('lang', 'en')
+#         return obj.get_translated_question(lang)
+#
+#     def get_answer(self, obj):
+#         # Get language from context; default is English
+#         lang = self.context.get('lang', 'en')
+#         return obj.get_translated_answer(lang)
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import serializers
+from .models import FAQ
+
+class FAQSerializer(serializers.ModelSerializer):
+    question = serializers.SerializerMethodField()
+    answer = serializers.SerializerMethodField()
+
+    class Meta:
+        model = FAQ
+        fields = ['id', 'question', 'answer']
+
+    def get_question(self, obj):
+        lang = self.context.get('lang', 'en')
+        return obj.get_translated_question(lang)
+
+    def get_answer(self, obj):
+        lang = self.context.get('lang', 'en')
+        return obj.get_translated_answer(lang)
+
+class FAQCreateUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = ['id', 'question', 'answer']
+
+    def create(self, validated_data):
+        # Create FAQ with English content
+        # Translations will be handled by the model's save method
+        return FAQ.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        # Update English content
+        instance.question = validated_data.get('question', instance.question)
+        instance.answer = validated_data.get('answer', instance.answer)
+        instance.save()  # This will trigger translations for all languages
+        return instance
