@@ -73,13 +73,13 @@ You can test the API at: [https://bharatfd-backend-7u4w.onrender.com/](https://b
 
 ### Method 2: Docker Setup
 
-1. Build the Docker image:
+1. PULL the Docker image:
    ```bash
-   docker build -t faq-system .
+   docker pull geetesh08/faq-system:latest
    ```
 2. Run the container:
    ```bash
-   docker run -p 8000:8000 -e REDIS_URL=Your_redis_cloud_url faq-system
+   docker run -p 8000:8000 -e REDIS_URL=Your_redis_cloud_url geetesh08/faq-system
    ```
 
 ## API Documentation
